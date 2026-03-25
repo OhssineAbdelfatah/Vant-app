@@ -1,7 +1,6 @@
 services:
   android-builder:
-    # Verified stable tag for March 2026
-    image: ghcr.io/cirruslabs/android-sdk:35
+    build: .
     volumes:
       - .:/project
     working_dir: /project
@@ -15,7 +14,7 @@ services:
     # 2. Ensure gradlew is executable, then build a signed release APK.
     command: >
       bash -c "
-        echo sdk.dir=\$ANDROID_SDK_ROOT > local.properties &&
+        echo sdk.dir=$$ANDROID_SDK_ROOT > local.properties &&
         chmod +x gradlew &&
         ./gradlew assembleRelease
       "
