@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     // Compose compiler plugin — replaces composeOptions.kotlinCompilerExtensionVersion in Kotlin 2.0+
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.devtools.ksp")
