@@ -29,7 +29,7 @@ android {
     // ── Release signing ───────────────────────────────────────────────────────
     signingConfigs {
         create("release") {
-            storeFile     = file(System.getenv("KEYSTORE_PATH") ?: "keystore/vant-release.jks")
+            storeFile     = rootProject.file(System.getenv("KEYSTORE_PATH") ?: "keystore/vant-release.jks")
             storePassword = System.getenv("KEYSTORE_PASS") ?: "vant2026!"
             keyAlias      = System.getenv("KEY_ALIAS")    ?: "vant"
             keyPassword   = System.getenv("KEY_PASS")     ?: "vant2026!"
