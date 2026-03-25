@@ -3,4 +3,6 @@ plugins {
     id("com.android.application") version "9.1.0" apply false
     // Kotlin 2.3.20 is the current tooling release
     id("org.jetbrains.kotlin.android") version "2.3.20" apply false
+    // KSP — required by Room for annotation processing (version mirrors Kotlin)
+    id("com.google.devtools.ksp") version "2.3.20-1.0.25" apply false
 }
