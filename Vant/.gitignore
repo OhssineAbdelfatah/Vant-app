@@ -1,0 +1,21 @@
+# Generated build artefacts
+build/
+.gradle/
+app/build/
+
+# Android local configuration — generated per developer / container
+local.properties
+
+# IDE-specific directories
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# Gradle wrapper cache (keep the jar and scripts, exclude downloads)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradlew
+!gradlew.bat

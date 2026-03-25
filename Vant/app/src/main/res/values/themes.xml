@@ -1,0 +1,4 @@
+<resources>
+    <!-- Vant uses a fully dark Material 3 theme; the app theme is applied via VantTheme in Compose -->
+    <style name="Theme.Vant" parent="android:Theme.DeviceDefault.NoActionBar" />
+</resources>
