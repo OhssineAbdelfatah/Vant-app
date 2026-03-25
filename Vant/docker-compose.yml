@@ -5,5 +5,17 @@ services:
     volumes:
       - .:/project
     working_dir: /project
-    # Automatically fixes permissions and triggers the build
-    command: bash -c "chmod +x gradlew && ./gradlew assembleDebug"
+    environment:
+      # Signing credentials — override these via a .env file or CI secrets.
+      - KEYSTORE_PATH=keystore/vant-release.jks
+      - KEYSTORE_PASS=${KEYSTORE_PASS:-vant2026!}
+      - KEY_ALIAS=${KEY_ALIAS:-vant}
+      - KEY_PASS=${KEY_PASS:-vant2026!}
+    # 1. Write sdk.dir so AGP can locate the Android SDK inside the container.
+    # 2. Ensure gradlew is executable, then build a signed release APK.
+    command: >
+      bash -c "
+        echo sdk.dir=\$ANDROID_SDK_ROOT > local.properties &&
+        chmod +x gradlew &&
+        ./gradlew assembleRelease
+      "
