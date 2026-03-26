@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.vant.tracker.data.local.MediaItemEntity
 import com.vant.tracker.domain.model.MediaType
 import com.vant.tracker.domain.model.Status
+import com.vant.tracker.domain.model.displayName
 
 @Composable
 fun HomeScreen(
@@ -115,7 +116,7 @@ private fun StatusSummaryCard(sc: StatusCount) {
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                text = sc.status.name.lowercase().replaceFirstChar { it.uppercase() },
+                text = sc.status.displayName(),
                 style = MaterialTheme.typography.labelSmall,
                 color = onColor,
             )

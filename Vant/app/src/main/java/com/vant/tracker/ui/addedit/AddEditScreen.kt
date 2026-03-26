@@ -14,6 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.vant.tracker.domain.model.MediaType
 import com.vant.tracker.domain.model.Status
+import com.vant.tracker.domain.model.displayName
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -94,7 +95,7 @@ fun AddEditScreen(
                     FilterChip(
                         selected = state.status == s,
                         onClick = { viewModel.setStatus(s) },
-                        label = { Text(s.name.lowercase().replaceFirstChar { it.uppercase() }) },
+                        label = { Text(s.displayName()) },
                     )
                 }
             }

@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vant.tracker.domain.model.MediaType
 import com.vant.tracker.domain.model.Status
+import com.vant.tracker.domain.model.displayName
 import com.vant.tracker.ui.library.StatusChip
 
 @OptIn(ExperimentalMaterial3Api::class)

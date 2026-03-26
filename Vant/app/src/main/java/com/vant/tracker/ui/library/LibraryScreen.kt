@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.vant.tracker.data.local.MediaItemEntity
 import com.vant.tracker.domain.model.MediaType
 import com.vant.tracker.domain.model.Status
+import com.vant.tracker.domain.model.displayName
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
