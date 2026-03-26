@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    // Compose compiler plugin — replaces composeOptions.kotlinCompilerExtensionVersion in Kotlin 2.0+
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.devtools.ksp")
 }
@@ -26,7 +25,6 @@ android {
         compose = true
     }
 
-    // ── Release signing ───────────────────────────────────────────────────────
     signingConfigs {
         create("release") {
             storeFile     = file(System.getenv("KEYSTORE_PATH") ?: "keystore/vant-release.jks")
@@ -48,13 +46,11 @@ android {
     }
 }
 
-// JVM toolchain — ensures the Kotlin compiler, javac, and tests all use JDK 17.
 kotlin {
     jvmToolchain(17)
 }
 
 dependencies {
-    // Compose Bill of Materials — keeps all Compose library versions in sync
     val composeBom = platform("androidx.compose:compose-bom:2026.01.00")
     implementation(composeBom)
 
@@ -63,21 +59,26 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
 
     // Lifecycle / ViewModel
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
 
-    // Room — offline-first local database
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.8.9")
+
+    // Adaptive layout / WindowSizeClass
+    implementation("androidx.compose.material3:material3-window-size-class")
+
+    // DataStore for settings
+    implementation("androidx.datastore:datastore-preferences:1.1.4")
+
+    // Room
     val roomVersion = "2.7.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
-
-    // Retrofit — TMDB API networking
-    val retrofitVersion = "2.11.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
