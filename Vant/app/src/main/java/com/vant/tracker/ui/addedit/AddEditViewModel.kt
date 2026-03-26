@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 
 data class AddEditUiState(
     val id: Long = 0,
+    val createdAt: Long = 0L,
     val title: String = "",
     val type: MediaType = MediaType.MOVIE,
     val year: String = "",
@@ -38,6 +39,7 @@ class AddEditViewModel(private val repo: MediaRepository) : ViewModel() {
                 _state.update {
                     it.copy(
                         id = item.id,
+                        createdAt = item.createdAt,
                         title = item.title,
                         type = item.type,
                         year = item.year?.toString() ?: "",
@@ -93,7 +95,7 @@ class AddEditViewModel(private val repo: MediaRepository) : ViewModel() {
                 episodesTotal = s.episodesTotal.toIntOrNull(),
                 lastWatchedSeason = s.lastWatchedSeason.toIntOrNull(),
                 lastWatchedEpisode = s.lastWatchedEpisode.toIntOrNull(),
-                createdAt = if (s.id == 0L) now else 0L,
+                createdAt = if (s.id == 0L) now else s.createdAt,
                 updatedAt = now,
             )
             if (s.id == 0L) {
